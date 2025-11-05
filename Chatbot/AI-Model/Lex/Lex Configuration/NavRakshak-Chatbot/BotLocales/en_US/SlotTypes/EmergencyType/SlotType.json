@@ -1,0 +1,17 @@
+{
+  "name": "EmergencyType",
+  "identifier": "PB7JGLC6DZ",
+  "description": null,
+  "slotTypeValues": [
+    { "synonyms": null, "sampleValue": { "value": "unsafe" } },
+    { "synonyms": null, "sampleValue": { "value": "lost_way" } }
+  ],
+  "parentSlotTypeSignature": null,
+  "valueSelectionSetting": {
+    "resolutionStrategy": "ORIGINAL_VALUE",
+    "advancedRecognitionSetting": {
+      "audioRecognitionStrategy": "UseSlotValuesAsCustomVocabulary"
+    },
+    "regexFilter": null
+  }
+}

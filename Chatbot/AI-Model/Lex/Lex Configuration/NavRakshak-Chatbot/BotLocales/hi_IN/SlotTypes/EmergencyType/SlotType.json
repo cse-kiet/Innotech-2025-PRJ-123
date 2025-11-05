@@ -1,0 +1,15 @@
+{
+  "name": "EmergencyType",
+  "identifier": "7GKIDZWNCB",
+  "description": null,
+  "slotTypeValues": [
+    { "synonyms": null, "sampleValue": { "value": "असुरक्षित" } },
+    { "synonyms": null, "sampleValue": { "value": "रास्ता भटक गए" } }
+  ],
+  "parentSlotTypeSignature": null,
+  "valueSelectionSetting": {
+    "resolutionStrategy": "ORIGINAL_VALUE",
+    "advancedRecognitionSetting": null,
+    "regexFilter": null
+  }
+}

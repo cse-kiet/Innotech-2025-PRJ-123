@@ -1,0 +1,155 @@
+{
+  "name": "infoType",
+  "identifier": "DBZ5J7FMTV",
+  "description": null,
+  "slotTypeName": "AreaInfoType",
+  "obfuscationSetting": null,
+  "valueElicitationSetting": {
+    "slotCaptureSetting": {
+      "codeHook": null,
+      "captureResponse": null,
+      "captureNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "ElicitSlot",
+          "slotToElicit": "longitude",
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      },
+      "captureConditional": null,
+      "failureResponse": null,
+      "failureNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "StartIntent",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": "FallbackIntent", "slots": null }
+      },
+      "failureConditional": null,
+      "elicitationCodeHook": {
+        "invocationLabel": null,
+        "enableCodeHookInvocation": true
+      }
+    },
+    "slotConstraint": "Required",
+    "promptSpecification": {
+      "messageGroupsList": [
+        {
+          "message": {
+            "ssmlMessage": null,
+            "customPayload": null,
+            "plainTextMessage": {
+              "value": "आपको किस प्रकार की जानकारी चाहिए? क्षेत्र का आकलन करने के लिए \"सुरक्षा\" कहें, नज़दीकी अस्पताल के लिए \"अस्पताल\" कहें, या पुलिस स्टेशन के लिए \"पुलिस\" कहें।"
+            },
+            "imageResponseCard": null
+          },
+          "variations": null
+        }
+      ],
+      "maxRetries": 4,
+      "allowInterrupt": true,
+      "messageSelectionStrategy": "Random",
+      "promptAttemptsSpecification": {
+        "Retry3": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Initial": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Retry4": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Retry2": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Retry1": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        }
+      }
+    },
+    "defaultValueSpecification": null,
+    "sampleUtterances": null,
+    "waitAndContinueSpecification": null
+  },
+  "multipleValuesSetting": null
+}

@@ -1,0 +1,19 @@
+{
+  "name": "MainMenuOption",
+  "identifier": "ZQXJTT3SEV",
+  "description": null,
+  "slotTypeValues": [
+    { "synonyms": null, "sampleValue": { "value": "Emergency Assistance" } },
+    { "synonyms": null, "sampleValue": { "value": "Area Information" } },
+    { "synonyms": null, "sampleValue": { "value": "Digital ID" } },
+    { "synonyms": null, "sampleValue": { "value": "Safety Updates" } }
+  ],
+  "parentSlotTypeSignature": null,
+  "valueSelectionSetting": {
+    "resolutionStrategy": "ORIGINAL_VALUE",
+    "advancedRecognitionSetting": {
+      "audioRecognitionStrategy": "UseSlotValuesAsCustomVocabulary"
+    },
+    "regexFilter": null
+  }
+}

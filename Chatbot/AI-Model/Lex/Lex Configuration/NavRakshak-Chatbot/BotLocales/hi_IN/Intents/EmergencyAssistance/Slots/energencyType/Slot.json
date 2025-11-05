@@ -1,0 +1,155 @@
+{
+  "name": "energencyType",
+  "identifier": "G2INPGIAO5",
+  "description": null,
+  "slotTypeName": "EmergencyType",
+  "obfuscationSetting": null,
+  "valueElicitationSetting": {
+    "slotCaptureSetting": {
+      "codeHook": null,
+      "captureResponse": null,
+      "captureNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "FulfillIntent",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      },
+      "captureConditional": null,
+      "failureResponse": null,
+      "failureNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "StartIntent",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": "FallbackIntent", "slots": null }
+      },
+      "failureConditional": null,
+      "elicitationCodeHook": {
+        "invocationLabel": null,
+        "enableCodeHookInvocation": true
+      }
+    },
+    "slotConstraint": "Required",
+    "promptSpecification": {
+      "messageGroupsList": [
+        {
+          "message": {
+            "ssmlMessage": null,
+            "customPayload": null,
+            "plainTextMessage": {
+              "value": "आप किस प्रकार की आपात स्थिति का सामना कर रहे हैं? यदि आपको खतरा महसूस हो रहा है तो 'असुरक्षित' कहें या यदि आप रास्ता भटक गए हैं तो 'रास्ता भटक गए' कहें।"
+            },
+            "imageResponseCard": null
+          },
+          "variations": null
+        }
+      ],
+      "maxRetries": 4,
+      "allowInterrupt": true,
+      "messageSelectionStrategy": "Random",
+      "promptAttemptsSpecification": {
+        "Retry3": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Initial": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Retry4": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Retry2": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        },
+        "Retry1": {
+          "textInputSpecification": { "startTimeoutMs": 30000 },
+          "allowedInputTypes": {
+            "allowAudioInput": true,
+            "allowDTMFInput": true
+          },
+          "audioAndDTMFInputSpecification": {
+            "startTimeoutMs": 4000,
+            "audioSpecification": { "endTimeoutMs": 640, "maxLengthMs": 15000 },
+            "dtmfSpecification": {
+              "maxLength": 513,
+              "endTimeoutMs": 5000,
+              "deletionCharacter": "*",
+              "endCharacter": "#"
+            }
+          },
+          "allowInterrupt": true
+        }
+      }
+    },
+    "defaultValueSpecification": null,
+    "sampleUtterances": null,
+    "waitAndContinueSpecification": null
+  },
+  "multipleValuesSetting": null
+}

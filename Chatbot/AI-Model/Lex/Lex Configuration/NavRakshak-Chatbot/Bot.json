@@ -1,0 +1,9 @@
+{
+  "name": "NavRakshak-Chatbot",
+  "version": "DRAFT",
+  "description": null,
+  "identifier": "UZZDM06FUP",
+  "errorLogSettings": { "enabled": false },
+  "dataPrivacy": { "childDirected": false },
+  "idleSessionTTLInSeconds": 300
+}

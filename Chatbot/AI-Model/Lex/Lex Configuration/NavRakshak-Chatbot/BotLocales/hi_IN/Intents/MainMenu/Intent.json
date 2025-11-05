@@ -1,0 +1,108 @@
+{
+  "name": "MainMenu",
+  "identifier": "OU1M4KQOHL",
+  "description": null,
+  "parentIntentSignature": null,
+  "sampleUtterances": [
+    { "utterance": "मुख्य मेनू" },
+    { "utterance": "वापस जाएँ" },
+    { "utterance": "मेनू पर वापस जाएँ" },
+    { "utterance": "होम" }
+  ],
+  "intentConfirmationSetting": null,
+  "intentClosingSetting": {
+    "isActive": true,
+    "nextStep": {
+      "sessionAttributes": null,
+      "dialogAction": {
+        "type": "EndConversation",
+        "slotToElicit": null,
+        "suppressNextMessage": null,
+        "intentsInScope": null
+      },
+      "intent": { "name": null, "slots": null }
+    },
+    "closingResponse": {
+      "messageGroupsList": [
+        {
+          "message": {
+            "ssmlMessage": null,
+            "customPayload": null,
+            "plainTextMessage": {
+              "value": "मुख्य मेनू में आपका स्वागत है! आप आपातकालीन सहायता, क्षेत्र संबंधी जानकारी, डिजिटल पहचान पत्र, या सुरक्षा अपडेट चुन सकते हैं। आप क्या करना चाहेंगे?"
+            },
+            "imageResponseCard": null
+          },
+          "variations": null
+        }
+      ],
+      "allowInterrupt": true
+    }
+  },
+  "initialResponseSetting": {
+    "conditional": null,
+    "codeHook": {
+      "isActive": true,
+      "invocationLabel": null,
+      "postCodeHookSpecification": {
+        "failureResponse": null,
+        "failureNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "EndConversation",
+            "slotToElicit": null,
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "failureConditional": null,
+        "successResponse": null,
+        "successNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "CloseIntent",
+            "slotToElicit": null,
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "successConditional": null,
+        "timeoutResponse": null,
+        "timeoutNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "EndConversation",
+            "slotToElicit": null,
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "timeoutConditional": null
+      },
+      "enableCodeHookInvocation": true
+    },
+    "nextStep": {
+      "sessionAttributes": null,
+      "dialogAction": {
+        "type": "InvokeDialogCodeHook",
+        "slotToElicit": null,
+        "suppressNextMessage": null,
+        "intentsInScope": null
+      },
+      "intent": { "name": null, "slots": null }
+    },
+    "initialResponse": null
+  },
+  "inputContexts": null,
+  "outputContexts": null,
+  "kendraConfiguration": null,
+  "qnAIntentConfiguration": null,
+  "bedrockAgentIntentConfiguration": null,
+  "qInConnectIntentConfiguration": null,
+  "dialogCodeHook": null,
+  "fulfillmentCodeHook": null,
+  "slotPriorities": []
+}

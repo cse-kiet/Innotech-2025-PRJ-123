@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavRakshak - Smart Tourist Safety System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-background text-foreground">
+    <div id="app" class="min-h-screen">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-700 p-4 relative overflow-hidden">
+            <!-- Animated background elements -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1000ms;"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 500ms;"></div>
+            </div>
+
+            <div class="w-full max-w-md space-y-8 relative z-10">
+                <div class="flex justify-between items-center">
+                    <div></div>
+                    <button id="darkModeToggle" class="p-2 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300">
+                        <i data-lucide="sun" class="h-4 w-4 hidden dark:inline"></i>
+                        <i data-lucide="moon" class="h-4 w-4 inline dark:hidden"></i>
+                    </button>
+                </div>
+
+                <div class="text-center space-y-6">
+                    <div class="flex items-center justify-center">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-lg opacity-50 animate-pulse"></div>
+                            <div class="relative bg-gradient-to-r from-green-400 to-blue-500 p-4 rounded-full shadow-2xl">
+                                <i data-lucide="shield" class="h-12 w-12 text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <h1 class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent font-bold text-4xl tracking-tight">
+                            NavRakshak
+                        </h1>
+                        <p class="text-muted-foreground text-lg">
+                            Smart Tourist Safety Monitoring System
+                        </p>
+                        <div class="flex items-center justify-center space-x-1 text-sm text-muted-foreground">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span>Secure • Reliable • Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="w-full">
+                    <div class="grid w-full grid-cols-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 shadow-lg rounded-lg p-1">
+                        <button id="touristTab" class="tab-trigger active flex items-center justify-center space-x-2 px-4 py-2 rounded-md transition-all duration-300">
+                            <i data-lucide="user" class="h-4 w-4"></i>
+                            <span>Tourist</span>
+                        </button>
+                        <button id="authorityTab" class="tab-trigger flex items-center justify-center space-x-2 px-4 py-2 rounded-md transition-all duration-300">
+                            <i data-lucide="users" class="h-4 w-4"></i>
+                            <span>Authority</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Tourist Login Content -->
+                    <div id="touristContent" class="tab-content active mt-6">
+                        <div class="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/30 dark:border-slate-700/50 shadow-2xl rounded-lg">
+                            <div class="p-6 pb-4">
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                                        <i data-lucide="user" class="h-5 w-5 text-blue-600 dark:text-blue-400"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl">Tourist Login</h3>
+                                        <p class="text-sm text-muted-foreground">Access your digital ID and safety features</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 space-y-5">
+                                <div class="space-y-2">
+                                    <label for="tourist-email" class="text-sm">Email Address</label>
+                                    <input id="tourist-email" type="email" placeholder="Enter your email" 
+                                           class="w-full h-11 px-3 py-2 bg-white/50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 transition-colors">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="tourist-password" class="text-sm">Password</label>
+                                    <input id="tourist-password" type="password" placeholder="Enter your password"
+                                           class="w-full h-11 px-3 py-2 bg-white/50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 transition-colors">
+                                </div>
+                                <div class="space-y-3 pt-2">
+                                    <button id="touristLogin" class="w-full h-11 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 rounded-lg flex items-center justify-center space-x-2">
+                                        <i data-lucide="user" class="h-4 w-4"></i>
+                                        <span>Login as Tourist</span>
+                                    </button>
+                                    <button class="w-full h-11 border-2 border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors rounded-lg">
+                                        Register New Tourist
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Authority Login Content -->
+                    <div id="authorityContent" class="tab-content mt-6">
+                        <div class="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/30 dark:border-slate-700/50 shadow-2xl rounded-lg">
+                            <div class="p-6 pb-4">
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <div class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                                        <i data-lucide="users" class="h-5 w-5 text-green-600 dark:text-green-400"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl">Authority Login</h3>
+                                        <p class="text-sm text-muted-foreground">Tourism Department & Police Dashboard</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 space-y-5">
+                                <div class="space-y-2">
+                                    <label for="authority-email" class="text-sm">Official Email</label>
+                                    <input id="authority-email" type="email" placeholder="Enter official email"
+                                           class="w-full h-11 px-3 py-2 bg-white/50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-lg focus:border-green-500 dark:focus:border-green-400 transition-colors">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="authority-password" class="text-sm">Secure Password</label>
+                                    <input id="authority-password" type="password" placeholder="Enter secure password"
+                                           class="w-full h-11 px-3 py-2 bg-white/50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-lg focus:border-green-500 dark:focus:border-green-400 transition-colors">
+                                </div>
+                                <div class="pt-2">
+                                    <button id="authorityLogin" class="w-full h-11 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 rounded-lg flex items-center justify-center space-x-2">
+                                        <i data-lucide="shield" class="h-4 w-4"></i>
+                                        <span>Login as Authority</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="mainApp" class="hidden min-h-screen bg-background text-foreground">
+            <!-- Header (hidden in chatbot mode) -->
+            <header id="header" class="sticky top-0 z-50 w-full relative overflow-hidden">
+                <!-- Animated Background -->
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900/20"></div>
+                <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+                <div class="absolute inset-0 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 shadow-lg"></div>
+                
+                <!-- Floating particles animation -->
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="absolute w-2 h-2 bg-blue-300/20 dark:bg-blue-400/20 rounded-full animate-float" style="left: 20%; animation-delay: 0s;"></div>
+                    <div class="absolute w-2 h-2 bg-blue-300/20 dark:bg-blue-400/20 rounded-full animate-float" style="left: 35%; animation-delay: 0.5s;"></div>
+                    <div class="absolute w-2 h-2 bg-blue-300/20 dark:bg-blue-400/20 rounded-full animate-float" style="left: 50%; animation-delay: 1s;"></div>
+                    <div class="absolute w-2 h-2 bg-blue-300/20 dark:bg-blue-400/20 rounded-full animate-float" style="left: 65%; animation-delay: 1.5s;"></div>
+                    <div class="absolute w-2 h-2 bg-blue-300/20 dark:bg-blue-400/20 rounded-full animate-float" style="left: 80%; animation-delay: 2s;"></div>
+                    <div class="absolute w-2 h-2 bg-blue-300/20 dark:bg-blue-400/20 rounded-full animate-float" style="left: 95%; animation-delay: 2.5s;"></div>
+                </div>
+                
+                <!-- Main Header -->
+                <div class="relative container mx-auto px-4">
+                    <div class="flex h-16 items-center justify-between">
+                        <!-- Logo and Brand -->
+                        <div class="flex items-center space-x-3">
+                            <div class="relative group">
+                                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                                <div class="relative bg-gradient-to-r from-blue-500 to-indigo-600 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="shield" class="h-6 w-6 text-white drop-shadow-lg"></i>
+                                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <h1 class="text-xl bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent animate-gradient bg-300% hover:scale-105 transition-transform cursor-pointer">
+                                    NavRakshak
+                                </h1>
+                                <div class="flex items-center space-x-2">
+                                    <p class="text-xs text-muted-foreground" id="userTypeLabel">
+                                        Tourist Safety Platform
+                                    </p>
+                                    <span class="text-xs px-1 py-0 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded">
+                                        LIVE
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Search Bar (Tourist only) -->
+                        <div id="searchSection" class="hidden lg:flex flex-1 max-w-lg mx-8">
+                            <div class="relative w-full group">
+                                <div class="absolute inset-0 bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-800 to-purple-800 rounded-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                                <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 z-10"></i>
+                                <i data-lucide="sparkles" class="absolute right-12 top-1/2 transform -translate-y-1/2 h-4 w-4 text-purple-500 animate-pulse z-10"></i>
+                                <input id="searchInput" placeholder="Ask NavRakshak AI about safety, places, routes..."
+                                       class="w-full pl-10 pr-16 py-2 bg-white/60 dark:bg-gray-800/60 border border-white/30 backdrop-blur-sm hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300 shadow-sm rounded-lg">
+                                <button id="searchBtn" class="absolute right-1 top-1/2 transform -translate-y-1/2 h-7 px-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-md flex items-center">
+                                    <i data-lucide="zap" class="h-3 w-3"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- User Profile -->
+                        <div class="flex items-center space-x-2">
+                            <div class="relative bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm px-2 hover:scale-105 transition-transform group rounded-lg p-2">
+                                <div class="flex items-center space-x-2">
+                                    <div class="relative">
+                                        <div class="h-8 w-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                                            <span id="userInitials">JD</span>
+                                        </div>
+                                        <div class="absolute -bottom-1 -right-1 h-3 w-3 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></div>
+                                    </div>
+                                    <div class="hidden md:block text-left">
+                                        <div class="flex items-center space-x-1">
+                                            <p class="text-sm" id="userName">John Doe</p>
+                                            <span class="text-xs px-1 py-0 bg-secondary text-secondary-foreground rounded" id="userBadge">VIP</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <p class="text-xs text-muted-foreground" id="userId">ID: #TR001</p>
+                                            <div id="userRating" class="flex items-center space-x-1">
+                                                <i data-lucide="star" class="h-2 w-2 text-yellow-400 fill-current"></i>
+                                                <span class="text-xs text-yellow-600">4.9</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button id="logoutBtn" class="text-muted-foreground hover:text-foreground">
+                                        <i data-lucide="log-out" class="h-4 w-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Navigation (Tourist only) -->
+                    <div id="touristNav" class="hidden md:flex items-center justify-center py-4 border-t border-white/10 relative">
+                        <nav class="flex items-center space-x-2 relative">
+                            <button class="nav-tab active" data-tab="dashboard">
+                                <i data-lucide="bar-chart-3" class="h-5 w-5"></i>
+                                <span>Dashboard</span>
+                            </button>
+                            <button class="nav-tab" data-tab="maps">
+                                <i data-lucide="map-pin" class="h-5 w-5"></i>
+                                <span>Maps</span>
+                            </button>
+                            <button class="nav-tab" data-tab="chatbot">
+                                <i data-lucide="message-circle" class="h-5 w-5"></i>
+                                <span>AI Assistant</span>
+                            </button>
+                            <button class="nav-tab" data-tab="id">
+                                <i data-lucide="user" class="h-5 w-5"></i>
+                                <span>Digital ID</span>
+                            </button>
+                            <button class="nav-tab emergency" data-tab="emergency">
+                                <i data-lucide="alert-triangle" class="h-5 w-5"></i>
+                                <span>SOS</span>
+                            </button>
+                            <button class="nav-tab" data-tab="settings">
+                                <i data-lucide="settings" class="h-5 w-5"></i>
+                                <span>Settings</span>
+                            </button>
+                        </nav>
+                    </div>
+
+                    <!-- Location Banner (Tourist only) -->
+                    <div id="locationBanner" class="hidden lg:block border-t border-white/5">
+                        <div class="relative py-3 bg-gradient-to-r from-blue-50/80 via-purple-50/50 to-indigo-50/80 dark:from-gray-800/80 dark:via-purple-900/20 dark:to-blue-900/30 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-100/60 to-purple-100/60 dark:from-gray-800/60 dark:to-blue-900/40"></div>
+                            
+                            <div class="relative container mx-auto px-4">
+                                <div class="flex items-center justify-between">
+                                    <!-- Location & Environment Info -->
+                                    <div class="flex items-center space-x-6">
+                                        <div class="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 rounded-full px-3 py-1 backdrop-blur-sm hover:scale-105 transition-transform">
+                                            <i data-lucide="mountain" class="h-4 w-4 text-blue-600"></i>
+                                            <span class="font-semibold text-blue-700 dark:text-blue-300">Shillong, Meghalaya</span>
+                                            <span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-1 rounded">Safe Zone</span>
+                                        </div>
+
+                                        <div class="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 rounded-full px-3 py-1 backdrop-blur-sm">
+                                            <i data-lucide="thermometer" class="h-4 w-4 text-orange-500"></i>
+                                            <span class="text-orange-600 dark:text-orange-400">22°C</span>
+                                            <i data-lucide="cloud" class="h-4 w-4 text-blue-500"></i>
+                                            <span class="text-green-600 dark:text-green-400">Clear</span>
+                                        </div>
+
+                                        <div class="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 rounded-full px-3 py-1 backdrop-blur-sm">
+                                            <i data-lucide="wind" class="h-4 w-4 text-cyan-500"></i>
+                                            <span class="text-cyan-600 dark:text-cyan-400">12 km/h</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Live Activity Stats -->
+                                    <div class="flex items-center space-x-6">
+                                        <div class="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 rounded-full px-3 py-1 backdrop-blur-sm">
+                                            <i data-lucide="navigation" class="h-4 w-4 text-purple-500 animate-pulse"></i>
+                                            <span class="text-purple-600 dark:text-purple-400">4 Attractions</span>
+                                        </div>
+
+                                        <div class="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 rounded-full px-3 py-1 backdrop-blur-sm">
+                                            <i data-lucide="users" class="h-4 w-4 text-indigo-500"></i>
+                                            <span class="text-indigo-600 dark:text-indigo-400" id="activeUsersCount">1,253 Active</span>
+                                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                        </div>
+
+                                        <div class="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 rounded-full px-3 py-1 backdrop-blur-sm">
+                                            <i data-lucide="radio" class="h-4 w-4 text-green-500"></i>
+                                            <span class="text-green-600 dark:text-green-400">24/7 Support</span>
+                                            <i data-lucide="heart" class="h-3 w-3 text-red-500 animate-pulse"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main id="mainContent" class="container mx-auto px-4 py-6">
+                <!-- Dashboard Content -->
+                <div id="dashboardContent" class="tab-content active space-y-6 relative">
+                    <!-- Emergency SOS Button -->
+                    <div class="border border-red-500 dark:border-red-400 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/30 dark:to-red-800/30 shadow-lg rounded-lg p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="relative">
+                                    <div class="h-10 w-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
+                                        <i data-lucide="alert-triangle" class="h-5 w-5 text-white"></i>
+                                    </div>
+                                    <div class="absolute -top-1 -right-1 h-3 w-3 bg-red-600 rounded-full animate-ping"></div>
+                                    <div class="absolute -top-1 -right-1 h-3 w-3 bg-red-600 rounded-full"></div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl text-red-700 dark:text-red-300">Emergency SOS</h3>
+                                    <p class="text-red-600 dark:text-red-400">Immediate emergency assistance</p>
+                                    <p class="text-sm text-red-500 dark:text-red-500">Location will be shared instantly</p>
+                                </div>
+                            </div>
+                            <button id="emergencyBtn" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 text-base shadow-2xl hover:shadow-3xl transition-all duration-200 transform hover:scale-105 rounded-lg flex items-center space-x-2">
+                                <i data-lucide="alert-triangle" class="h-4 w-4"></i>
+                                <span>ACTIVATE SOS</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg p-6 shadow-lg">
+                            <div class="pb-3">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="shield" class="h-4 w-4"></i>
+                                    <span>Safety Score</span>
+                                </div>
+                            </div>
+                            <div class="text-3xl" id="safetyScoreValue">85/100</div>
+                            <div class="w-full bg-blue-400 rounded-full h-2 mt-2">
+                                <div class="bg-white h-2 rounded-full" id="safetyScoreBar" style="width: 85%"></div>
+                            </div>
+                            <p class="text-sm text-blue-100 mt-1">Good safety level</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg p-6 shadow-lg">
+                            <div class="pb-3">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                    <span>Current Location</span>
+                                </div>
+                            </div>
+                            <div class="font-semibold">Shillong, Meghalaya</div>
+                            <div class="flex items-center space-x-2 mt-2">
+                                <i data-lucide="activity" class="h-4 w-4 animate-pulse"></i>
+                                <span class="text-sm text-green-100">Live tracking active</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg p-6 shadow-lg">
+                            <div class="pb-3">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="navigation" class="h-4 w-4"></i>
+                                    <span>Trip Status</span>
+                                </div>
+                            </div>
+                            <div class="font-semibold">Day 3 of 7</div>
+                            <div class="text-sm text-purple-100 mt-1">5 locations visited</div>
+                        </div>
+                    </div>
+
+                    <!-- Map and Geofence Status -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="lg:col-span-2 bg-card border border-border rounded-lg shadow-lg p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-lg">Live Location & Geo-Fencing</h3>
+                                    <p class="text-muted-foreground text-sm">Real-time location monitoring with safety zone alerts</p>
+                                </div>
+                                <button class="bg-secondary hover:bg-secondary/80 px-4 py-2 rounded-lg text-sm flex items-center space-x-2">
+                                    <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                    <span>Full Map View</span>
+                                </button>
+                            </div>
+                            <div class="bg-muted rounded-lg h-64 flex items-center justify-center bg-grid-pattern">
+                                <div class="text-center text-muted-foreground">
+                                    <i data-lucide="map" class="h-16 w-16 mb-4 mx-auto"></i>
+                                    <p class="text-xl">Interactive Map View</p>
+                                    <p>Shillong, Meghalaya</p>
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs flex items-center space-x-1">
+                                            <i data-lucide="shield" class="h-3 w-3"></i>
+                                            <span>Safe Zone</span>
+                                        </span>
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs flex items-center space-x-1">
+                                            <i data-lucide="navigation" class="h-3 w-3"></i>
+                                            <span>GPS Connected</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <button class="bg-destructive hover:bg-destructive/80 text-destructive-foreground px-4 py-2 rounded-lg text-sm">
+                                    Pause Tracking
+                                </button>
+                                <div class="flex items-center space-x-2">
+                                    <span class="border border-green-600 text-green-600 px-2 py-1 rounded-full text-xs flex items-center space-x-1">
+                                        <i data-lucide="shield" class="h-3 w-3"></i>
+                                        <span>Safe Zone Active</span>
+                                    </span>
+                                    <span class="bg-secondary text-blue-600 px-2 py-1 rounded-full text-xs flex items-center space-x-1">
+                                        <i data-lucide="navigation" class="h-3 w-3"></i>
+                                        <span>GPS Connected</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Geofence Status -->
+                        <div class="bg-card border border-border rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg mb-2">Geofence Status</h3>
+                            <p class="text-muted-foreground text-sm mb-4">Active safety zones around you</p>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-950 rounded-lg border border-green-200 dark:border-green-800">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="h-3 w-3 bg-green-500 rounded-full animate-pulse"></div>
+                                        <div>
+                                            <div class="text-sm text-green-700 dark:text-green-300">Safe Zone</div>
+                                            <div class="text-xs text-green-600 dark:text-green-400">Police Bazaar</div>
+                                        </div>
+                                    </div>
+                                    <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">INSIDE</span>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 bg-yellow-50 dark:bg-yellow-950 rounded-lg border border-yellow-200 dark:border-yellow-800">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                        <div>
+                                            <div class="text-sm text-yellow-700 dark:text-yellow-300">Caution Zone</div>
+                                            <div class="text-xs text-yellow-600 dark:text-yellow-400">Construction Area</div>
+                                        </div>
+                                    </div>
+                                    <span class="border border-yellow-600 text-yellow-600 px-2 py-1 rounded-full text-xs">1.2km</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 space-y-2">
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-muted-foreground">Zone Notifications</span>
+                                    <input type="checkbox" checked class="rounded">
+                                </div>
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-muted-foreground">Exit Alerts</span>
+                                    <input type="checkbox" checked class="rounded">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <!-- AI Assistant Quick Access -->
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg shadow-lg p-6">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <div class="h-10 w-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                    <i data-lucide="message-circle" class="h-5 w-5 text-white"></i>
+                </div>
+                <div class="absolute -top-1 -right-1 h-3 w-3 bg-green-500 border-2 border-white rounded-full animate-pulse"></div>
+            </div>
+            <div>
+                <h3 class="text-xl text-purple-700 dark:text-purple-300">NavRakshak AI Assistant</h3>
+                <p class="text-purple-600 dark:text-purple-400">24/7 multilingual safety support</p>
+                <p class="text-sm text-purple-500 dark:text-purple-500">Get instant help with emergencies, directions & more</p>
+            </div>
+        </div>
+        <button id="chatNowBtn" onclick="window.open('https://sbrtron.xyz/', '_blank')" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 text-base shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105 rounded-lg flex items-center space-x-2">
+            <i data-lucide="message-circle" class="h-4 w-4"></i>
+            <span>Chat Now</span>
+        </button>
+    </div>
+</div>
+
+                <!-- Maps Content -->
+                <div id="mapsContent" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="text-2xl">Interactive Maps</h2>
+                                <p class="text-muted-foreground">Real-time geofencing and location tracking</p>
+                            </div>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg">
+                                <i data-lucide="layers" class="h-4 w-4 mr-2"></i>
+                                Layers
+                            </button>
+                        </div>
+                        <div class="bg-card border border-border rounded-lg shadow-lg p-6">
+                            <div class="bg-muted rounded-lg h-96 flex items-center justify-center bg-grid-pattern">
+                                <div class="text-center text-muted-foreground">
+                                    <i data-lucide="map" class="h-20 w-20 mb-4 mx-auto"></i>
+                                    <p class="text-xl">Full Screen Map View</p>
+                                    <p>Real-time geofencing and location tracking</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chatbot Content (Full Screen) -->
+                <div id="chatbotContent" class="tab-content hidden fixed inset-0 z-40">
+                    <div class="flex flex-col h-screen relative overflow-hidden">
+                        <!-- Fixed Background -->
+                        <div class="fixed inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20 -z-10"></div>
+                        <div class="fixed inset-0 bg-grid-pattern opacity-20 -z-10"></div>
+                        
+                        <!-- Floating particles animation -->
+                        <div class="fixed inset-0 overflow-hidden -z-10">
+                            <div class="absolute w-2 h-2 bg-blue-300/30 dark:bg-blue-400/30 rounded-full animate-float" style="left: 10%; top: 20%; animation-delay: 0s; animation-duration: 3s;"></div>
+                            <div class="absolute w-2 h-2 bg-blue-300/30 dark:bg-blue-400/30 rounded-full animate-float" style="left: 20%; top: 80%; animation-delay: 0.5s; animation-duration: 4s;"></div>
+                            <div class="absolute w-2 h-2 bg-blue-300/30 dark:bg-blue-400/30 rounded-full animate-float" style="left: 80%; top: 30%; animation-delay: 1s; animation-duration: 3.5s;"></div>
+                            <div class="absolute w-2 h-2 bg-blue-300/30 dark:bg-blue-400/30 rounded-full animate-float" style="left: 90%; top: 70%; animation-delay: 1.5s; animation-duration: 5s;"></div>
+                            <div class="absolute w-2 h-2 bg-blue-300/30 dark:bg-blue-400/30 rounded-full animate-float" style="left: 60%; top: 10%; animation-delay: 2s; animation-duration: 4.5s;"></div>
+                            <div class="absolute w-2 h-2 bg-blue-300/30 dark:bg-blue-400/30 rounded-full animate-float" style="left: 40%; top: 90%; animation-delay: 2.5s; animation-duration: 3.8s;"></div>
+                        </div>
+
+                        <!-- Header -->
+                        <div class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-white/20 dark:border-gray-700/30 shadow-lg relative z-10 p-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <button id="chatBackBtn" class="flex items-center space-x-2 text-muted-foreground hover:text-foreground px-3 py-1 rounded-lg hover:bg-secondary transition-colors">
+                                        <i data-lucide="arrow-left" class="h-4 w-4"></i>
+                                        <span>Back</span>
+                                    </button>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="relative">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur opacity-20 animate-pulse"></div>
+                                            <div class="relative bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-full">
+                                                <i data-lucide="bot" class="h-6 w-6 text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">NavRakshak Assistant</h3>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-xs px-2 py-1 rounded flex items-center space-x-1">
+                                                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                                    <span>Online</span>
+                                                </span>
+                                                <span class="text-xs text-muted-foreground">24/7 Available</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chatbot Iframe -->
+                        <div class="flex-1 relative z-10 p-4">
+                            <div class="h-full max-w-4xl mx-auto">
+                                <div class="h-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 shadow-lg overflow-hidden rounded-lg">
+                                    <iframe
+                                        id="chatbotIframe"
+                                        src="https://sbrtron.xyz/"
+                                        class="w-full h-full border-0"
+                                        title="NavRakshak Chatbot"
+                                        allow="microphone; camera; geolocation"
+                                        style="min-height: 600px;">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital ID Content -->
+                <div id="idContent" class="tab-content hidden">
+                    <div class="max-w-md mx-auto">
+                        <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-2xl p-6 text-white">
+                            <div class="text-center mb-6">
+                                <div class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
+                                    <i data-lucide="user" class="h-10 w-10 text-blue-500"></i>
+                                </div>
+                                <h2 class="text-2xl">Digital Tourist ID</h2>
+                                <p class="text-blue-100">Blockchain Secured</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-blue-100 text-sm">Name</p>
+                                    <p class="font-semibold">John Doe</p>
+                                </div>
+                                <div>
+                                    <p class="text-blue-100 text-sm">Tourist ID</p>
+                                    <p class="font-mono">NR-2024-001234</p>
+                                </div>
+                                <div>
+                                    <p class="text-blue-100 text-sm">Valid Until</p>
+                                    <p>Dec 31, 2024</p>
+                                </div>
+                                <div>
+                                    <p class="text-blue-100 text-sm">Current Location</p>
+                                    <p>Shillong, Meghalaya</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 p-4 bg-white/10 rounded-lg">
+                                <div class="flex justify-center">
+                                    <div class="w-24 h-24 bg-white rounded-lg flex items-center justify-center">
+                                        <i data-lucide="qr-code" class="h-12 w-12 text-blue-500"></i>
+                                    </div>
+                                </div>
+                                <p class="text-center text-blue-100 text-sm mt-2">Scan for verification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Content -->
+                <div id="emergencyContent" class="tab-content hidden">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="bg-red-50 dark:bg-red-900/20 border border-red-500 rounded-xl p-6 mb-6">
+                            <div class="flex items-center mb-4">
+                                <i data-lucide="alert-triangle" class="h-8 w-8 text-red-500 mr-3"></i>
+                                <h2 class="text-2xl text-red-700 dark:text-red-300">Emergency Services</h2>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <button class="emergency-contact bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-lg flex items-center justify-between" data-number="100" data-service="Police">
+                                    <div class="flex items-center">
+                                        <i data-lucide="phone" class="h-5 w-5 mr-3"></i>
+                                        <span>Police</span>
+                                    </div>
+                                    <span class="bg-blue-600 px-2 py-1 rounded">100</span>
+                                </button>
+                                
+                                <button class="emergency-contact bg-red-500 hover:bg-red-600 text-white p-4 rounded-lg flex items-center justify-between" data-number="108" data-service="Ambulance">
+                                    <div class="flex items-center">
+                                        <i data-lucide="heart" class="h-5 w-5 mr-3"></i>
+                                        <span>Ambulance</span>
+                                    </div>
+                                    <span class="bg-red-600 px-2 py-1 rounded">108</span>
+                                </button>
+                                
+                                <button class="emergency-contact bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-lg flex items-center justify-between" data-number="101" data-service="Fire Brigade">
+                                    <div class="flex items-center">
+                                        <i data-lucide="flame" class="h-5 w-5 mr-3"></i>
+                                        <span>Fire Brigade</span>
+                                    </div>
+                                    <span class="bg-orange-600 px-2 py-1 rounded">101</span>
+                                </button>
+                                
+                                <button class="emergency-contact bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg flex items-center justify-between" data-number="1363" data-service="Tourist Helpline">
+                                    <div class="flex items-center">
+                                        <i data-lucide="info" class="h-5 w-5 mr-3"></i>
+                                        <span>Tourist Helpline</span>
+                                    </div>
+                                    <span class="bg-green-600 px-2 py-1 rounded">1363</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Content -->
+                <div id="settingsContent" class="tab-content hidden">
+                    <div class="max-w-2xl mx-auto space-y-6">
+                        <div>
+                            <h2 class="text-2xl mb-2">Settings</h2>
+                            <p class="text-muted-foreground">Customize your NavRakshak experience</p>
+                        </div>
+
+                        <div class="bg-card border border-border rounded-lg p-6 space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-lg">Dark Mode</h3>
+                                    <p class="text-sm text-muted-foreground">Toggle between light and dark themes</p>
+                                </div>
+                                <button id="settingsDarkModeToggle" class="w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full p-1 transition-colors">
+                                    <div class="w-4 h-4 bg-white rounded-full shadow transform transition-transform dark:translate-x-6"></div>
+                                </button>
+                            </div>
+
+                            <div class="border-t border-border pt-6">
+                                <h3 class="text-lg mb-4">Notifications</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm">Safety Alerts</span>
+                                        <input type="checkbox" checked class="rounded">
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm">Location Updates</span>
+                                        <input type="checkbox" checked class="rounded">
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm">Emergency Notifications</span>
+                                        <input type="checkbox" checked class="rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Authority Dashboard Content -->
+                <div id="authorityDashboardContent" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="text-2xl">Authority Dashboard</h2>
+                                <p class="text-muted-foreground">Tourism Department & Police Control Center</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            <div class="bg-card border border-border rounded-lg p-6">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i data-lucide="users" class="h-5 w-5 text-blue-500"></i>
+                                    <span class="text-sm text-muted-foreground">Active Tourists</span>
+                                </div>
+                                <div class="text-2xl">1,253</div>
+                                <p class="text-xs text-green-600">+12% from yesterday</p>
+                            </div>
+
+                            <div class="bg-card border border-border rounded-lg p-6">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i data-lucide="alert-triangle" class="h-5 w-5 text-red-500"></i>
+                                    <span class="text-sm text-muted-foreground">Active Alerts</span>
+                                </div>
+                                <div class="text-2xl">3</div>
+                                <p class="text-xs text-red-600">2 high priority</p>
+                            </div>
+
+                            <div class="bg-card border border-border rounded-lg p-6">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i data-lucide="shield" class="h-5 w-5 text-green-500"></i>
+                                    <span class="text-sm text-muted-foreground">Safe Zones</span>
+                                </div>
+                                <div class="text-2xl">24</div>
+                                <p class="text-xs text-green-600">All operational</p>
+                            </div>
+
+                            <div class="bg-card border border-border rounded-lg p-6">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <i data-lucide="activity" class="h-5 w-5 text-purple-500"></i>
+                                    <span class="text-sm text-muted-foreground">Response Teams</span>
+                                </div>
+                                <div class="text-2xl">8</div>
+                                <p class="text-xs text-blue-600">6 available</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-card border border-border rounded-lg p-6">
+                            <h3 class="text-lg mb-4">Recent Activity</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-muted rounded">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="h-2 w-2 bg-green-500 rounded-full"></div>
+                                        <span class="text-sm">Tourist checked into safe zone - Police Bazaar</span>
+                                    </div>
+                                    <span class="text-xs text-muted-foreground">2 min ago</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-muted rounded">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="h-2 w-2 bg-yellow-500 rounded-full"></div>
+                                        <span class="text-sm">Caution alert sent for construction zone</span>
+                                    </div>
+                                    <span class="text-xs text-muted-foreground">5 min ago</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-muted rounded">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="h-2 w-2 bg-blue-500 rounded-full"></div>
+                                        <span class="text-sm">New tourist registered - ID: #TR001235</span>
+                                    </div>
+                                    <span class="text-xs text-muted-foreground">10 min ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Floating Emergency Button (Tourist only, not in emergency or chatbot mode) -->
+            <button id="floatingEmergencyBtn" class="fixed bottom-6 right-6 bg-red-500 hover:bg-red-600 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-xl z-50 animate-pulse-glow">
+                <i data-lucide="alert-triangle" class="h-6 w-6"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

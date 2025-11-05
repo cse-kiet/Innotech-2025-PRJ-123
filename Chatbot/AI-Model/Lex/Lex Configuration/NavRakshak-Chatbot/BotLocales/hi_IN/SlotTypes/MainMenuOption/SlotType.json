@@ -1,0 +1,19 @@
+{
+  "name": "MainMenuOption",
+  "identifier": "1ZYNO2FWZD",
+  "description": null,
+  "slotTypeValues": [
+    { "synonyms": null, "sampleValue": { "value": "आपातकालीन सहायता" } },
+    { "synonyms": null, "sampleValue": { "value": "क्षेत्र संबंधी जानकारी" } },
+    { "synonyms": null, "sampleValue": { "value": "डिजिटल पहचान पत्र" } },
+    { "synonyms": null, "sampleValue": { "value": "सुरक्षा अपडेट" } }
+  ],
+  "parentSlotTypeSignature": null,
+  "valueSelectionSetting": {
+    "resolutionStrategy": "ORIGINAL_VALUE",
+    "advancedRecognitionSetting": {
+      "audioRecognitionStrategy": "UseSlotValuesAsCustomVocabulary"
+    },
+    "regexFilter": null
+  }
+}

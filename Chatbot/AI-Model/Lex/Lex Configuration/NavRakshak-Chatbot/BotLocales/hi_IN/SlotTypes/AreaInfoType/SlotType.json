@@ -1,0 +1,18 @@
+{
+  "name": "AreaInfoType",
+  "identifier": "VLGWOE1DSC",
+  "description": null,
+  "slotTypeValues": [
+    { "synonyms": null, "sampleValue": { "value": "पुलिस" } },
+    { "synonyms": null, "sampleValue": { "value": "अस्पताल" } },
+    { "synonyms": null, "sampleValue": { "value": "सुरक्षा" } }
+  ],
+  "parentSlotTypeSignature": null,
+  "valueSelectionSetting": {
+    "resolutionStrategy": "ORIGINAL_VALUE",
+    "advancedRecognitionSetting": {
+      "audioRecognitionStrategy": "UseSlotValuesAsCustomVocabulary"
+    },
+    "regexFilter": null
+  }
+}

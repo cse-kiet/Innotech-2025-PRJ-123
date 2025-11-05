@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#667eea">
+    <title>NavRakshak Chatbot - Tourist Safety Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Clean Header - Only NavRakshak Chatbot name -->
+        <div class="chat-header">
+            <!-- Hidden elements (still functional) -->
+            <div class="voice-controls" style="display: none;">
+                <button class="voice-btn" id="toggleSpeechOutput" title="Toggle voice output">🔊</button>
+                <button class="voice-btn" id="testSpeechBtn" title="Test voice output">🔊</button>
+            </div>
+            
+            <div class="bot-info" style="display: none;">ap-southeast-2 | Lex V2 | Voice Enabled</div>
+            
+            <!-- Only show chatbot name -->
+            <h1>NavRakshak Chatbot</h1>
+        </div>
+
+        <div id="locationAlert" class="location-alert" style="display: none;">
+            📍 Location access is required for emergency services.
+            <button onclick="requestLocationNow()">Allow Location</button>
+        </div>
+        
+        <!-- Hidden but functional -->
+        <div id="connectionStatus" class="connection-status status-connecting" style="display: none;">
+            🟡 Initializing connection to Lex V2...
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message system-message">
+                <div class="message-content">
+                    <strong>System:</strong> Welcome! Click the 🎤 button to speak or type your message. Voice features are being initialized...
+                </div>
+                <div class="message-time" id="welcomeTime"></div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions Container -->
+        <div id="quickActionsContainer">
+            
+            <!-- Step 1: Language Selection Buttons -->
+            <div id="languageSelector" class="button-section">
+                <h3>Choose your language / अपनी भाषा चुनें:</h3>
+                <div class="button-grid">
+                    <button onclick="setLanguage('en_US')" class="menu-button lang-btn">🇺🇸 English</button>
+                    <button onclick="setLanguage('hi_IN')" class="menu-button lang-btn">🇮🇳 हिंदी</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Main Menu Buttons -->
+            <div id="mainMenu" class="button-section" style="display: none;">
+                <h3 id="mainMenuTitle">How can I help you?</h3>
+                <div class="button-grid">
+                    <button onclick="showEmergencyOptions()" class="menu-button emergency-btn">🚨 Emergency Assistance</button>
+                    <button onclick="showAreaOptions()" class="menu-button info-btn">🧭 Area Information</button>
+                    <button onclick="showDigitalIDOptions()" class="menu-button">🆔 Digital ID</button>
+                    <button onclick="selectSafetyUpdates()" class="menu-button">📢 Safety Updates</button>
+                </div>
+                <button onclick="goBackToLanguage()" class="back-button">← Back to Language</button>
+            </div>
+
+            <!-- Step 3a: Emergency Assistance Options -->
+            <div id="emergencyMenu" class="button-section" style="display: none;">
+                <h3 id="emergencyTitle">Emergency Assistance</h3>
+                <div class="button-grid">
+                    <button onclick="selectEmergency('unsafe')" class="menu-button emergency-btn">🚨 Unsafe Situation</button>
+                    <button onclick="selectEmergency('lost_way')" class="menu-button emergency-btn">🧭 Lost Way</button>
+                </div>
+                <button onclick="goBackToMain()" class="back-button">← Back to Main Menu</button>
+            </div>
+
+            <!-- Step 3b: Area Information Options -->
+            <div id="areaMenu" class="button-section" style="display: none;">
+                <h3 id="areaTitle">Area Information</h3>
+                <div class="button-grid">
+                    <button onclick="selectAreaInfo('hospital')" class="menu-button info-btn">🏥 Hospital Info</button>
+                    <button onclick="selectAreaInfo('police')" class="menu-button info-btn">👮 Police Info</button>
+                    <button onclick="selectAreaInfo('safety')" class="menu-button info-btn">🛡️ Area Assessment</button>
+                </div>
+                <button onclick="goBackToMain()" class="back-button">← Back to Main Menu</button>
+            </div>
+
+            <!-- Step 3c: Digital ID Options -->
+            <div id="digitalIDMenu" class="button-section" style="display: none;">
+                <h3 id="digitalIDTitle">Digital ID</h3>
+                <div class="button-grid">
+                    <button onclick="selectDigitalID('profile')" class="menu-button">👤 Profile</button>
+                    <button onclick="selectDigitalID('qr_code')" class="menu-button">📱 QR Code</button>
+                </div>
+                <button onclick="goBackToMain()" class="back-button">← Back to Main Menu</button>
+            </div>
+        </div>
+        
+        <div class="input-area">
+            <input type="text" id="messageInput" placeholder="Type or speak your message..." onkeypress="handleKeyPress(event)">
+            <div class="input-buttons">
+                <button id="voiceInputBtn" title="Click and speak">🎤</button>
+                <button id="toggleMenuBtn" onclick="toggleQuickActions()" title="Toggle Menu">
+                    <span id="toggleIcon">▲</span>
+                </button>
+                <button id="sendButton" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden elements for functionality -->
+    <div style="display: none;">
+        <div class="toggle-container" id="toggleContainer">
+            <span class="toggle-label" id="toggleLabel">Hide Menu</span>
+            <button class="toggle-menu-btn" id="toggleQuickActionsBtn">▼</button>
+        </div>
+    </div>
+
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1500.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

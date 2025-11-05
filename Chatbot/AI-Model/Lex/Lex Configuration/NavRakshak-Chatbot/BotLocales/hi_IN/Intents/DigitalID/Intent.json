@@ -1,0 +1,121 @@
+{
+  "name": "DigitalID",
+  "identifier": "G0JZ73IIDH",
+  "description": null,
+  "parentIntentSignature": null,
+  "sampleUtterances": [
+    { "utterance": "प्रोफ़ाइल देखें" },
+    { "utterance": "क्यूआर कोड दिखाएँ" },
+    { "utterance": "मेरी जानकारी" },
+    { "utterance": "डिजिटल पहचान पत्र" },
+    { "utterance": "profile" },
+    { "utterance": "qr code" }
+  ],
+  "intentConfirmationSetting": null,
+  "intentClosingSetting": null,
+  "initialResponseSetting": {
+    "conditional": null,
+    "codeHook": {
+      "isActive": true,
+      "invocationLabel": null,
+      "postCodeHookSpecification": {
+        "failureResponse": null,
+        "failureNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "EndConversation",
+            "slotToElicit": null,
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "failureConditional": null,
+        "successResponse": null,
+        "successNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "ElicitSlot",
+            "slotToElicit": "idtype",
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "successConditional": null,
+        "timeoutResponse": null,
+        "timeoutNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "EndConversation",
+            "slotToElicit": null,
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "timeoutConditional": null
+      },
+      "enableCodeHookInvocation": true
+    },
+    "nextStep": {
+      "sessionAttributes": null,
+      "dialogAction": {
+        "type": "InvokeDialogCodeHook",
+        "slotToElicit": null,
+        "suppressNextMessage": null,
+        "intentsInScope": null
+      },
+      "intent": { "name": null, "slots": null }
+    },
+    "initialResponse": null
+  },
+  "inputContexts": null,
+  "outputContexts": null,
+  "kendraConfiguration": null,
+  "qnAIntentConfiguration": null,
+  "bedrockAgentIntentConfiguration": null,
+  "qInConnectIntentConfiguration": null,
+  "dialogCodeHook": null,
+  "fulfillmentCodeHook": {
+    "isActive": true,
+    "postFulfillmentStatusSpecification": {
+      "failureResponse": null,
+      "failureNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "EndConversation",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      },
+      "successResponse": null,
+      "successNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "EndConversation",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      },
+      "timeoutResponse": null,
+      "timeoutNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "EndConversation",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      }
+    },
+    "fulfillmentUpdatesSpecification": null,
+    "enabled": true
+  },
+  "slotPriorities": [{ "priority": 1, "slotName": "idtype" }]
+}

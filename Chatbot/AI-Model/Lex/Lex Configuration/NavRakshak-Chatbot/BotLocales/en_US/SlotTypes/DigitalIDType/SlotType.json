@@ -1,0 +1,17 @@
+{
+  "name": "DigitalIDType",
+  "identifier": "YRHB8LU0ZS",
+  "description": null,
+  "slotTypeValues": [
+    { "synonyms": null, "sampleValue": { "value": "profile" } },
+    { "synonyms": null, "sampleValue": { "value": "qr_code" } }
+  ],
+  "parentSlotTypeSignature": null,
+  "valueSelectionSetting": {
+    "resolutionStrategy": "ORIGINAL_VALUE",
+    "advancedRecognitionSetting": {
+      "audioRecognitionStrategy": "UseSlotValuesAsCustomVocabulary"
+    },
+    "regexFilter": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "DigitalIDType",
+  "identifier": "W88BAFNAWP",
+  "description": null,
+  "slotTypeValues": [
+    { "synonyms": null, "sampleValue": { "value": "क्यूआर कोड" } },
+    { "synonyms": null, "sampleValue": { "value": "प्रोफ़ाइल" } }
+  ],
+  "parentSlotTypeSignature": null,
+  "valueSelectionSetting": {
+    "resolutionStrategy": "ORIGINAL_VALUE",
+    "advancedRecognitionSetting": {
+      "audioRecognitionStrategy": "UseSlotValuesAsCustomVocabulary"
+    },
+    "regexFilter": null
+  }
+}

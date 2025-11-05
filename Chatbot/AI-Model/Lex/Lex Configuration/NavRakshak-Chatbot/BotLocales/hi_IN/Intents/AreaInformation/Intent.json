@@ -1,0 +1,126 @@
+{
+  "name": "AreaInformation",
+  "identifier": "XZE4PJZLCU",
+  "description": null,
+  "parentIntentSignature": null,
+  "sampleUtterances": [
+    { "utterance": "क्या यह क्षेत्र सुरक्षित है?" },
+    { "utterance": "पुलिस स्टेशन खोजें" },
+    { "utterance": "अस्पताल खोजें" },
+    { "utterance": "क्षेत्र की सुरक्षा" },
+    { "utterance": "सुरक्षा संबंधी जानकारी" },
+    { "utterance": "क्षेत्र संबंधी जानकारी" },
+    { "utterance": "नज़दीकी सेवाएँ दिखाएँ" }
+  ],
+  "intentConfirmationSetting": null,
+  "intentClosingSetting": null,
+  "initialResponseSetting": {
+    "conditional": null,
+    "codeHook": {
+      "isActive": true,
+      "invocationLabel": null,
+      "postCodeHookSpecification": {
+        "failureResponse": null,
+        "failureNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "EndConversation",
+            "slotToElicit": null,
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "failureConditional": null,
+        "successResponse": null,
+        "successNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "ElicitSlot",
+            "slotToElicit": "infoType",
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "successConditional": null,
+        "timeoutResponse": null,
+        "timeoutNextStep": {
+          "sessionAttributes": null,
+          "dialogAction": {
+            "type": "EndConversation",
+            "slotToElicit": null,
+            "suppressNextMessage": null,
+            "intentsInScope": null
+          },
+          "intent": { "name": null, "slots": null }
+        },
+        "timeoutConditional": null
+      },
+      "enableCodeHookInvocation": true
+    },
+    "nextStep": {
+      "sessionAttributes": null,
+      "dialogAction": {
+        "type": "InvokeDialogCodeHook",
+        "slotToElicit": null,
+        "suppressNextMessage": null,
+        "intentsInScope": null
+      },
+      "intent": { "name": null, "slots": null }
+    },
+    "initialResponse": null
+  },
+  "inputContexts": null,
+  "outputContexts": null,
+  "kendraConfiguration": null,
+  "qnAIntentConfiguration": null,
+  "bedrockAgentIntentConfiguration": null,
+  "qInConnectIntentConfiguration": null,
+  "dialogCodeHook": null,
+  "fulfillmentCodeHook": {
+    "isActive": true,
+    "postFulfillmentStatusSpecification": {
+      "failureResponse": null,
+      "failureNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "EndConversation",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      },
+      "successResponse": null,
+      "successNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "EndConversation",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      },
+      "timeoutResponse": null,
+      "timeoutNextStep": {
+        "sessionAttributes": null,
+        "dialogAction": {
+          "type": "EndConversation",
+          "slotToElicit": null,
+          "suppressNextMessage": null,
+          "intentsInScope": null
+        },
+        "intent": { "name": null, "slots": null }
+      }
+    },
+    "fulfillmentUpdatesSpecification": null,
+    "enabled": true
+  },
+  "slotPriorities": [
+    { "priority": 3, "slotName": "longitude" },
+    { "priority": 1, "slotName": "infoType" },
+    { "priority": 2, "slotName": "latitude" }
+  ]
+}
