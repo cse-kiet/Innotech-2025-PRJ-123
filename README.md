@@ -1,4 +1,4 @@
-# NavRakshak 🚨🌏  
+# Synaptrix 🚨🌏  
 ### Smart Tourist Safety Monitoring & Incident Response System  
 
 ---
